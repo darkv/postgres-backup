@@ -21,6 +21,7 @@ The service will make a backup only for one single database.
 * **Maintained by:** https://github.com/darkv/postgres-backup
 * **Where to file issues:** https://github.com/darkv/postgres-backup/issues
 * **Supported architectures:** `linux/amd64`, `linux/arm64`
+* **Docker Hub link:** https://hub.docker.com/r/jhaeger/postgres-backup
 
 
 # Configuration

@@ -123,8 +123,8 @@ This will look for the file _/root/backups/2022-01-01\_12-00\_\<database-name\>\
 
 Given the cron settings provided in the environment variable _BACKUP\_CRON_ the backup\_init script installs a cron job to schedule the backup.sh script.
 
-The value of the variable is a standard cron pattern.
-Example for running every day at 03:00:
+The value of the variable is a standard cron pattern. Be aware that the timezone within the container is UTC.
+Example for running every day at 03:00 UTC:
 
     0 3 * * *
 

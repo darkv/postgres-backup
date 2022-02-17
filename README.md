@@ -33,13 +33,13 @@ The postgres-backup docker image is configured via environment variables which h
 
 The list of environment variables to be used:
 
-* CRON\_TIMER - the cron timer setting (e.g. "0 1 * * *")
-* BACKUP\_DB\_HOST - database server
-* BACKUP\_DB - the postgres database name
-* BACKUP\_DB\_USER - database user
-* BACKUP\_DB\_PASSWORD - database user password
-* BACKUP\_ROLLING - maximum number of backup files to keep, defaults to 5
-* BACKUP\_ENCRYPTION - optional passphrase, if present backups will be encrypted with GPG
+* `CRON_TIMER` - the cron timer setting (e.g. "0 1 * * *")
+* `BACKUP_DB_HOST` - database server
+* `BACKUP_DB` - the postgres database name
+* `BACKUP_DB_USER` - database user
+* `BACKUP_DB_PASSWORD` - database user password
+* `BACKUP_ROLLING` - maximum number of backup files to keep, defaults to 5
+* `BACKUP_ENCRYPTION` - optional passphrase, if present backups will be encrypted with GPG
 
 
 ## Docker volume
@@ -74,7 +74,7 @@ The backup script automatically keeps a specific number of backup files. The def
 
 ### Encryption of Backup Files
 
-All backup files are not secured by default. If you want to encrypt those files just set the environment variable _BACKUP\_ENCRYPTION_ to the passphrase to be used. When set, the database dump will be encrypted with GPG. During restoring of a database the passphrase will be used too to decrypt the files first. When encryption is used no unencrypted temporary files are created during the process that could be used to breach security.
+All backup files are not secured by default. If you want to encrypt those files just set the environment variable `BACKUP_ENCRYPTION` to the passphrase to be used. When set, the database dump will be encrypted with GPG. During restoring of a database the passphrase will be used too to decrypt the files first. When encryption is used no unencrypted temporary files are created during the process that could be used to breach security.
 
 Please note that enabling encryption will increase the time and workload of the export process.
 
@@ -121,7 +121,7 @@ This will look for the file _/root/backups/2022-01-01\_12-00\_\<database-name\>\
 
 # Execution schedule
 
-Given the cron settings provided in the environment variable _BACKUP\_CRON_ the backup\_init script installs a cron job to schedule the backup.sh script.
+Given the cron settings provided in the environment variable `BACKUP_CRON` the backup\_init script installs a cron job to schedule the backup.sh script.
 
 The value of the variable is a standard cron pattern. Be aware that the timezone within the container is UTC.
 Example for running every day at 03:00 UTC:

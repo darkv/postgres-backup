@@ -6,7 +6,7 @@
 # The last backup will be used to restore the database. In case a timestamp is
 # provided as argument, a specific backup can be selected for restoration instead.
 #
-# Example: ./restore.sh 2022-01-01_12:00
+# Example: ./restore.sh 2022-01-01_12-00
 
 echo "======================================="
 echo "Starting Restore..."

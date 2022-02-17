@@ -13,7 +13,7 @@ echo "======================================="
 # make environment variables visible to cron 
 source /root/backup.properties
 
-BACKUP_DATE="$(date +%Y-%m-%d_%H:%M)"
+BACKUP_DATE="$(date +%Y-%m-%d_%H-%M)"
 BACKUP_FILE="/root/backups/${BACKUP_DATE}_${BACKUP_DB}_dump.backup"
 : "${BACKUP_ROLLING:=5}"
 

@@ -62,9 +62,9 @@ All backups are saved to the directory:
 
     /root/backups/
 
-Each backup file has an ISO timestamp prefix indicating the backup time and the database name:
+Each backup file has a timestamp prefix indicating the backup time and the database name:
 
-    2022-01-01_01:00_<database-name>_dump.backup
+    2022-01-01_01-00_<database-name>_dump.backup
 
 
 ### Rolling Backup Files
@@ -102,7 +102,7 @@ To list all locally existing backups run:
 
 The backup service provides a script to restore a database from a backup file. It can be started either from outside the container:
 
-	docker exec -it <container-id> /root/restore.sh [<iso-timestamp>]
+	docker exec -it <container-id> /root/restore.sh [<timestamp>]
 
 or you can first log into the backup container with:
 
@@ -110,13 +110,13 @@ or you can first log into the backup container with:
 
 and then start the backup script:
 
-	root@<container-id>:/# /root/restore.sh [<iso-timestamp>]
+	root@<container-id>:/# /root/restore.sh [<timestamp>]
  
- If you don‘t pass a parameter to the restore script it will take the newest backup file for restoration. Alternatively you can pass a timestamp in ISO format to take the corresponding backup file instead:
+ If you don‘t pass a parameter to the restore script it will take the newest backup file for restoration. Alternatively you can pass a timestamp to take the corresponding backup file instead:
 
- 	/root/restore.sh 2022-01-01_12:00
+ 	/root/restore.sh 2022-01-01_12-00
 
-This will look for the file _/root/backups/2022-01-01\_12:00\_\<database-name\>\_dump.backup_.
+This will look for the file _/root/backups/2022-01-01\_12-00\_\<database-name\>\_dump.backup_.
 
 
 # Execution schedule

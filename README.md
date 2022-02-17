@@ -116,7 +116,7 @@ and then start the backup script:
 
  	/root/restore.sh 2022-01-01_12:00
 
-This will look for the file _/root/backups/2022-01-01\_12:00\_<database-name>\_dump.backup_.
+This will look for the file _/root/backups/2022-01-01\_12:00\_\<database-name\>\_dump.backup_.
 
 
 # Execution schedule

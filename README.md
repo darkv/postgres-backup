@@ -34,6 +34,7 @@ The postgres-backup docker image is configured via environment variables which h
 The list of environment variables to be used:
 
 * `CRON_TIMER` - the cron timer setting (e.g. "0 1 * * *")
+* `TZ` - optional timezone name to use, if missing default UTC will be used
 * `BACKUP_DB_HOST` - database server
 * `BACKUP_DB` - the postgres database name
 * `BACKUP_DB_USER` - database user
@@ -69,7 +70,7 @@ Each backup file has a timestamp prefix indicating the backup time and the datab
 
 ### Rolling Backup Files
 
-The backup script automatically keeps a specific number of backup files. The default number of files to keep is 5. You can change this setting with the environment variable _BACKUP\_ROLLING_. If the current number of backup files exceeds the configured maximum the oldest file(s) will be deleted.
+The backup script automatically keeps a specific number of backup files. The default number of files to keep is 5. You can change this setting with the environment variable `BACKUP_ROLLING`. If the current number of backup files exceeds the configured maximum the oldest file(s) will be deleted.
 
 
 ### Encryption of Backup Files
@@ -121,10 +122,11 @@ This will look for the file _/root/backups/2022-01-01\_12-00\_\<database-name\>\
 
 # Execution schedule
 
-Given the cron settings provided in the environment variable `BACKUP_CRON` the backup\_init script installs a cron job to schedule the backup.sh script.
+Given the cron settings provided in the environment variable `CRON_TIMER` the backup\_init script installs a cron job to schedule the backup.sh script. The value of that variable is a standard [cron pattern](https://en.wikipedia.org/wiki/Cron#Overview).
 
-The value of the variable is a standard cron pattern. Be aware that the timezone within the container is UTC.
-Example for running every day at 03:00 UTC:
+Be aware that the timezone within the container is UTC unless you defined the `TZ` environment variable. Choose an appropriate timezone name from the [list of possible names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+Example for running every day at 03:00 UTC (unless defined timezone otherwise):
 
     0 3 * * *
 

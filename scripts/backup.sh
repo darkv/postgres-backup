@@ -42,7 +42,7 @@ echo "*** file size of backup = $BACKUP_FILESIZE"
 NUMBER_OF_BACKUP_FILES=$(ls -l /root/backups/*_${BACKUP_DB}_dump.backup | grep -v ^l | wc -l)
 if [ "$NUMBER_OF_BACKUP_FILES" -gt "$BACKUP_ROLLING" ]; then 
   echo "*** deleting old backups..."
-  ls -F /root/backups/*_dump.tar.gz | head -n -$BACKUP_ROLLING | xargs rm
+  ls -F /root/backups/*_dump.backup | head -n -$BACKUP_ROLLING | xargs rm
 fi
 
 
